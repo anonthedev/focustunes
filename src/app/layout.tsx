@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins, Raleway } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Focus Tunes',
@@ -49,7 +50,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${raleway.variable} ${poppins.variable}`}>{children}</body>
+      <body className={`${raleway.variable} ${poppins.variable}`}>{children}
+        <Analytics />
+      </body>
     </html>
   )
 }
