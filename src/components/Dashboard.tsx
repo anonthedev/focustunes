@@ -1,16 +1,38 @@
-import { files } from "@/utils/soundsArray"
+"use client"
+
+// import { files } from "@/utils/soundsArray"
 import Sound from "./Sound"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Dashboard() {
+    const [soundFiles, setSoundFiles] = useState<String[] | null | undefined>([])
+
+    useEffect(() => {
+        fetch("/api/getSounds")
+            .then((data) => data.json())
+            .then(resp => setSoundFiles(resp.sounds))
+        document.onkeydown = function (e) {
+            if (e.key == " " ||
+                e.code == "Space" ||
+                e.keyCode == 32
+            ) {
+                const audioEls = document.getElementsByTagName("audio")
+                for (let i = 0; i < audioEls.length; i++) {
+                    audioEls[i].pause()
+                }
+            }
+        }
+    })
+
     return (
         <section className="flex flex-col w-screen h-screen items-center">
             <div className="mt-32 md:mt-24">
                 <h1 className="text-center text-5xl font-semibold font-raleway">Let&apos;s get you focused.</h1>
             </div>
             <div className="flex flex-row flex-wrap justify-center px-14 gap-10 mt-32 pb-10 md:flex-col lg:px-10 lg:gap-8 md:mt-24">
-                {files.map((file) => (
-                    <Sound key={file} soundName={`${file.slice(0, -5)}`} />
+                {soundFiles?.map((soundFile, i) => (
+                    <Sound key={i} soundName={`${soundFile.slice(0, -5)}`} />
                 ))}
             </div>
             <Link target="_blank" href={"/credits"} className="no-underline text-white fixed right-5 top-5 bg-purple-600 font-poppins py-2 px-4 rounded-md">Sound Credits</Link>
