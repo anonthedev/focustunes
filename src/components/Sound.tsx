@@ -41,7 +41,7 @@ export default function Sound({ soundName }: propType) {
                 <div className="flex flex-col items-center gap-4">
                     <button onClick={() => {
                         setIsPlaying(!isPlaying)
-                    }}>{audioRef.current?.paused ? <CiPlay1 size={20} /> : <CiPause1 size={20} />}</button>
+                    }}>{!audioRef.current?.paused ? <CiPlay1 size={20} /> : <CiPause1 size={20} />}</button>
                     <div className="flex flex-row items-center gap-3">
                         <CiVolumeHigh size={20} />
                         <input
