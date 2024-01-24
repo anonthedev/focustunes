@@ -20,17 +20,17 @@ export default function Sound({ soundName }: propType) {
         const audio = audioRef.current
         isPlaying ? audio?.play() : audio?.pause()
         audio!.volume = volume
+        console.log(audioRef.current?.paused)
 
         return (() => {
             audio!.volume = 0.8
         })
+
     }, [isPlaying, volume])
 
     function capitalizeFirstLetter(text: string) {
         return text.charAt(0).toUpperCase() + text.slice(1);
     }
-
-    console.log(audioRef.current?.paused)
 
     return (
         <div className="rounded-lg w-64 min-h-72 bg-[#121212] flex flex-col items-center justify-between py-5 px-8 gap-4 ">

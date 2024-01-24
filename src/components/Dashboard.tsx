@@ -1,6 +1,5 @@
 "use client"
 
-// import { files } from "@/utils/soundsArray"
 import Sound from "./Sound"
 import Link from "next/link"
 import { useEffect, useState } from "react"
