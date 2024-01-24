@@ -1,18 +1,34 @@
 "use client"
 
-// import { files } from "@/utils/soundsArray"
 import Sound from "./Sound"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function Dashboard() {
-    const [soundFiles, setSoundFiles] = useState<String[] | null | undefined>([])
-
-    useEffect(() => {
-        fetch("/api/getSounds")
+    const [soundFiles, setSoundFiles] = useState<any[] | null | undefined>([])
+    
+    async function getSounds() {
+        await fetch("/api/getSounds")
             .then((data) => data.json())
             .then(resp => setSoundFiles(resp.sounds))
         
+    }
+
+    useEffect(() => {
+        document.onkeydown = function (e) {
+            if (e.key == " " ||
+                e.code == "Space"
+            ) {
+                const audioEls = document.getElementsByTagName("audio")
+                for (let i = 0; i < audioEls.length; i++) {
+                    audioEls[i].pause()
+                }
+            }
+        }
+    })
+
+    useEffect(() => {
+        getSounds()
     }, [])
 
     return (
