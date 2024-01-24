@@ -5,15 +5,14 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function Dashboard() {
-    const [soundFiles, setSoundFiles] = useState<String[] | null | undefined>([])
-
+    const [soundFiles, setSoundFiles] = useState<any[] | null | undefined>([])
+    
     async function getSounds() {
         await fetch("/api/getSounds")
             .then((data) => data.json())
             .then(resp => setSoundFiles(resp.sounds))
     }
 
-    
     useEffect(() => {
         document.onkeydown = function (e) {
             if (e.key == " " ||
@@ -21,6 +20,7 @@ export default function Dashboard() {
             ) {
                 const audioEls = document.getElementsByTagName("audio")
                 for (let i = 0; i < audioEls.length; i++) {
+                    console.log(audioEls[i].paused)
                     audioEls[i].pause()
                 }
             }
