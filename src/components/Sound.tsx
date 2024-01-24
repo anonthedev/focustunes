@@ -57,7 +57,7 @@ export default function Sound({ soundName }: propType) {
         <div className="rounded-lg w-64 min-h-72 bg-[#121212] flex flex-col items-center justify-between py-5 px-8 gap-4 ">
             <audio loop ref={audioRef} src={soundPath}></audio>
             <Image src={musicImg} alt="music-logo" width={100} height={100} />
-            {audioRef.current && <div className="flex flex-col items-center gap-4">
+           <div className="flex flex-col items-center gap-4">
                 <span className="font-poppins font-medium text-gray-300 text-2xl text-center">{capitalizeFirstLetter(soundName)}</span>
                 <div className="flex flex-col items-center gap-4">
                     <button onClick={() => {
@@ -76,7 +76,7 @@ export default function Sound({ soundName }: propType) {
                         />
                     </div>
                 </div>
-            </div>}
+            </div>
         </div>
     )
 }
