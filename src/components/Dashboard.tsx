@@ -12,18 +12,18 @@ export default function Dashboard() {
         fetch("/api/getSounds")
             .then((data) => data.json())
             .then(resp => setSoundFiles(resp.sounds))
-        document.onkeydown = function (e) {
-            if (e.key == " " ||
-                e.code == "Space" ||
-                e.keyCode == 32
-            ) {
-                const audioEls = document.getElementsByTagName("audio")
-                for (let i = 0; i < audioEls.length; i++) {
-                    audioEls[i].pause()
-                }
-            }
-        }
-    })
+        // document.onkeydown = function (e) {
+        //     if (e.key == " " ||
+        //         e.code == "Space" ||
+        //         e.keyCode == 32
+        //     ) {
+        //         const audioEls = document.getElementsByTagName("audio")
+        //         for (let i = 0; i < audioEls.length; i++) {
+        //             audioEls[i].pause()
+        //         }
+        //     }
+        // }
+    }, [])
 
     return (
         <section className="flex flex-col w-screen h-screen items-center">
