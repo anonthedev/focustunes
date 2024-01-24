@@ -12,6 +12,9 @@ export default function Dashboard() {
         fetch("/api/getSounds")
             .then((data) => data.json())
             .then(resp => setSoundFiles(resp.sounds))
+    }, [])
+
+    useEffect(() => {
         document.onkeydown = function (e) {
             if (e.key == " " ||
                 e.code == "Space" ||
