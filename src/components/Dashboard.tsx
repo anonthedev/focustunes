@@ -13,6 +13,7 @@ export default function Dashboard() {
             .then(resp => setSoundFiles(resp.sounds))
     }
 
+    
     useEffect(() => {
         document.onkeydown = function (e) {
             if (e.key == " " ||
