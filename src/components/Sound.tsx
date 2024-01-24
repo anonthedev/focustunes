@@ -18,6 +18,14 @@ export default function Sound({ soundName }: propType) {
     const [volume, setVolume] = useState<number>(0.8)
     const soundPath = `/sounds/${soundName}.webm`;
 
+    useEffect(()=>{
+        audioRef.current!.volume = volume;
+
+        return (()=>{
+            audioRef.current!.volume = 0.8;
+        })
+    }, [volume])
+
     useEffect(() => {
         if (!audioRef.current?.paused && shouldPlay) {
             setIsPlaying(true);
@@ -70,7 +78,7 @@ export default function Sound({ soundName }: propType) {
                             className="h-[2px] accent-purple-600"
                             type="range"
                             value={volume}
-                            step="0.1"
+                            step="0.05"
                             min="0"
                             max="1"
                             onChange={(e) => setVolume(parseFloat(e.target.value))}
