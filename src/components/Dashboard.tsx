@@ -20,7 +20,6 @@ export default function Dashboard() {
             ) {
                 const audioEls = document.getElementsByTagName("audio")
                 for (let i = 0; i < audioEls.length; i++) {
-                    console.log(audioEls[i].paused)
                     audioEls[i].pause()
                 }
             }
