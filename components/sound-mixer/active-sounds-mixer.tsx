@@ -43,7 +43,7 @@ export function ActiveSoundsMixer({
         </p>
       </div>
 
-      <div className="flex-1 space-y-3 overflow-auto">
+      <div className="max-h-[50vh] space-y-3 overflow-y-auto">
         {activeSounds.map((sound) => (
           <div
             key={sound.id}
