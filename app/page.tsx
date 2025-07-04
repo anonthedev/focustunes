@@ -161,7 +161,7 @@ export default function FocusSoundMixer() {
         >
           <TabsList
             className={`grid ${
-              isMobile ? "w-full" : "w-1/4"
+              isMobile ? "w-full" : "w-fit"
             } grid-cols-3 rounded-lg bg-secondary`}
           >
             <TabsTrigger value="library">Sound Library</TabsTrigger>
