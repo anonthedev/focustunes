@@ -26,6 +26,14 @@ export function SoundLibrary({
   loadingSounds,
   activeSoundIds,
 }: SoundLibraryProps) {
+  const filteredSounds = SOUND_LIBRARY.filter((sound) => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      sound.name.toLowerCase().includes(searchLower) ||
+      sound.tags.some((tag) => tag.toLowerCase().includes(searchLower))
+    );
+  });
+
   return (
     <Card>
       <CardHeader className="flex flex-col gap-4">
@@ -38,7 +46,7 @@ export function SoundLibrary({
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {SOUND_LIBRARY.map((sound) => (
+          {filteredSounds.map((sound) => (
             <Card
               key={sound.id}
               className="cursor-pointer hover:shadow-md transition-shadow"

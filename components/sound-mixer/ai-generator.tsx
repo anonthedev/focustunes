@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Sparkles } from "lucide-react"
+import { Loader2, Sparkles } from "lucide-react"
 import { toast } from "sonner"
 
 interface AIGeneratorProps {
@@ -37,7 +37,7 @@ export function AIGenerator({ aiPrompt, isGenerating, onPromptChange, onGenerate
       <Button onClick={handleGenerate} disabled={!aiPrompt.trim() || isGenerating} className="w-fit float-right">
         {isGenerating ? (
           <>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
+            <Loader2 className="animate-spin" />
             Generating...
           </>
         ) : (
